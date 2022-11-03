@@ -6,7 +6,7 @@ class Bullets {
         //Bullets position
         this.bulletsPosition = {
             x: playerPosition.x + playerSize.width,
-            y: playerPosition.y
+            y: playerPosition.y + (playerSize.height / 2)
         }
         //Bullets size
         this.bulletsSize = {
