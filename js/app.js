@@ -1,5 +1,5 @@
 const app = {
-    appName: 'Nuestro canvas',
+    appName: 'Unraven',
     version: '1.0.0',
     license: undefined,
     authors: 'Alejandro Abad/João Pedro',
@@ -18,6 +18,7 @@ const app = {
     FPS: 60,
     framesCounter: 0,
     score: 0,
+    music: new Audio('./sounds/soundtrack.mp3'),
 
     init() {
         document.querySelector('#myCanvas').style = "display:block"
@@ -25,8 +26,8 @@ const app = {
         this.setDimensions()
         this.setContext()
         this.start()
-        let initMusic = new Audio('./sounds/juego.mp3')
-        initMusic.play()
+        this.music.play()
+        this.music.loop = true
     },
 
     setContext() {
@@ -64,7 +65,7 @@ const app = {
                 }
 
                 if (this.framesCounter % 600 === 0) {
-                    this.enemiesSpeed += 1 / 4
+                    this.enemiesSpeed += 1 / 2
                 }
 
                 this.clearAll()
@@ -96,7 +97,6 @@ const app = {
         this.player.movePlayer()
     },
 
-    //Todos los dibujos en el escenario
     drawAll() {
         this.background.draw()
         this.player.draw()
@@ -105,7 +105,6 @@ const app = {
         this.drawScore()
     },
 
-    //Colisión del enemigo
     checkColisionsEnemies() {
         this.enemies.forEach(enemie => {
             if (
@@ -117,7 +116,6 @@ const app = {
         })
     },
 
-    //Colisión de las balas
     checkColisionsBullets() {
         this.player.bullets.forEach(bullet => {
             this.enemies.forEach(enemie => {
@@ -139,8 +137,6 @@ const app = {
         })
     },
 
-    //Colisión powerUp problemas
-
     checkColisionPowerUp() {
         this.powerUp.forEach(pwrUp => {
             if (
@@ -159,7 +155,6 @@ const app = {
         })
     },
 
-    //PowerUpEffects
     changeVelocity() {
 
         this.enemiesSpeed = this.enemiesSpeed / 2
@@ -186,7 +181,7 @@ const app = {
         this.ctx.fillStyle = "#CD1504";
         this.ctx.fillText(`Score: ${this.score}`, 5, 60);
     },
-    //Game Over
+
     gameOver() {
 
         this.ctx.fillStyle = '#CD1504'

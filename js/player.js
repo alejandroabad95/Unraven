@@ -1,34 +1,27 @@
 class Player {
 
     constructor(ctx, canvasSize, playerPosition, playerSize) {
-        //context
+
         this.ctx = ctx;
-        //canvasSize
         this.canvasSize = canvasSize
-        //playerPosition
         this.playerPosition = {
             x: 20,
             y: canvasSize.h / 2
-            // y: canvasSize.height / 2
+
         }
-        //playerSize
         this.playerSize = {
             width: 180,
             height: 180
         }
-        //playerSpeed
         this.playerSpeed = 30;
-        //playerImage
         this.image = new Image();
         this.image.src = "./image/raven.png";
         this.image.frames = 0;
         this.image.framesIndex = 0;
-        //control
         this.keys = { up: false, right: false, down: false, left: false }
-        //Array of bullets for shooting
         this.bullets = []
     }
-    //methods of player
+
     setEventHandlers() {
 
         document.onkeydown = event => {
@@ -95,24 +88,6 @@ class Player {
 
         })
     }
-
-
-
-
-    // setTimeout(() => {
-
-    //     this.enemiesSpeed = 2 * this.enemiesSpeed
-
-    //     this.enemies.forEach((elem) => {
-    //         elem.enemiesSpeed = 2 * this.enemiesSpeed
-    //     })
-
-
-    // }, 5000)
-
-
-
-
 
 }
 
